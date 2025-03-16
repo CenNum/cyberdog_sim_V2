@@ -75,7 +75,7 @@
            	<collision name="Aarea_wall_00_collision">
                     <geometry>
                     	<mesh>
-              		<uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Aarea_wall_00.stl</uri>
+              		<uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Aarea_wall_00.stl</uri>
               		<scale>0.01 0.01 0.01</scale>
             		</mesh>
                     </geometry>
@@ -83,7 +83,7 @@
         	<visual name="Aarea_wall_00_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Aarea_wall_00.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Aarea_wall_00.stl</uri>
               			   <scale>0.01 0.01 0.01</scale>
             			</mesh>	
           		</geometry>
@@ -98,7 +98,7 @@
            	<collision name="s_curve_01_collision">
                     <geometry>
                     	<mesh>
-              		<uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/s_curve_01.stl</uri>
+              		<uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/s_curve_01.stl</uri>
               		<scale>1 1 1</scale>
             		</mesh>
                     </geometry>
@@ -106,7 +106,7 @@
         	<visual name="s_curve_01_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/s_curve_01.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/s_curve_01.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -121,7 +121,7 @@
            	<collision name="Barea_wall_02_collision">
                     <geometry>
                     	<mesh>
-              		<uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_wall_02.stl</uri>
+              		<uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_wall_02.stl</uri>
               		<scale>1 1 1</scale>
             		</mesh>
                     </geometry>
@@ -129,7 +129,7 @@
         	<visual name="Barea_wall_02_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_wall_02.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_wall_02.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -145,7 +145,7 @@
            	<collision name="Barea_rod_03_collision">
                     <geometry>
                     	<mesh>
-              		<uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_rod_03.stl</uri>
+              		<uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_rod_03.stl</uri>
               		<scale>1 1 1</scale>
             		</mesh>
                     </geometry>
@@ -153,7 +153,7 @@
         	<visual name="Barea_rod_03_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_rod_03.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_rod_03.stl</uri>
               			   <scale>0.01 0.01 0.01</scale>
             			</mesh>	
           		</geometry>
@@ -169,7 +169,7 @@
            	<collision name="Barea_slope_04_collision">
                     <geometry>
                     	<mesh>
-              		<uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_slope_04.stl</uri>
+              		<uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_slope_04.stl</uri>
               		<scale>1 1 1</scale>
             		</mesh>
                     </geometry>
@@ -177,7 +177,7 @@
         	<visual name="Barea_slope_04_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_slope_04.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_slope_04.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -193,7 +193,7 @@
            	<collision name="Barea_stoneroad_05_collision">
                     <geometry>
                     	<mesh>
-              		<uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_stoneroad_05.stl</uri>
+              		<uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_stoneroad_05.stl</uri>
               		<scale>1 1 1</scale>
             		</mesh>
                     </geometry>
@@ -201,7 +201,7 @@
         	<visual name="Barea_stoneroad_05_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_stoneroad_05.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/Barea_stoneroad_05.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -217,7 +217,7 @@
         	<visual name="Barea_stoneroad_05_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/arrow_broad_06.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/arrow_broad_06.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -252,7 +252,7 @@
         	<visual name="QR_code_A1_07_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/QR_code_A1_07.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/QR_code_A1_07.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -268,7 +268,7 @@
         	<visual name="QR_code_B1_08_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/QR_code_B1_08.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/QR_code_B1_08.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
@@ -326,7 +326,7 @@
         	<visual name="light_broad_09_visual">
           		<geometry>
           			<mesh>
-              			   <uri>/home/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/light_broad_09.stl</uri>
+              			   <uri>/home/cennum/cyberdog_sim/src/cyberdog_simulator/cyberdog_gazebo/model/race_meshes/light_broad_09.stl</uri>
               			   <scale>1 1 1</scale>
             			</mesh>	
           		</geometry>
