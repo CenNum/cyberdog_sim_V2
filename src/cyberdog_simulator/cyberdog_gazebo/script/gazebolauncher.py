@@ -19,7 +19,7 @@ import sys, signal, subprocess, time
 timeout_before_kill = 1.0  # [s]
 timeout_after_kill = 1.0  # [s]
 
-
+#ctrl+c signal handler
 def signal_handler(sig, frame):
     print('killing gazebo')
     time.sleep(timeout_before_kill)
@@ -30,7 +30,7 @@ def signal_handler(sig, frame):
 
 
 if __name__ == "__main__":
-    signal.signal(signal.SIGINT, signal_handler)
-    cmd = ' '.join(sys.argv[1:])
+    signal.signal(signal.SIGINT, signal_handler) #ctrl+c signal handler
+    cmd = ' '.join(sys.argv[1:]) #从命令行参数中获取除脚本名以外的所有参数，并将它们连接成一个字符串
     print(cmd)
-    subprocess.call(cmd, shell=True)
+    subprocess.call(cmd, shell=True) #调用系统命令，启动gazebo

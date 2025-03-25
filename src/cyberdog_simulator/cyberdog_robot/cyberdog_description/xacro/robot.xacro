@@ -82,6 +82,14 @@
       </inertial>
     </link>
 
+    <link name="D435_optical_link"></link>
+    <joint name="D435_optical_joint" type="fixed">
+        <parent link="D435_camera_link" />
+        <child link="D435_optical_link" />
+        <origin rpy="${-3.141592/2} 0 ${-3.141592/2}" xyz="0 0 0" />
+    </joint>
+
+
     <joint name="D435_camera_joint" type="fixed">
         <parent link="body" />
         <child link="D435_camera_link" />

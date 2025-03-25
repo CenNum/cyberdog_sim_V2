@@ -7,6 +7,72 @@
             <robotName>$(arg ROBOT)</robotName>
         </plugin>
     </gazebo>
+
+    <gazebo reference="D435_camera_link">
+        <sensor type="depth" name="D435_camera">
+            <plugin name="depth_camera" filename="libgazebo_ros_camera.so">
+                <frame_name>D435_optical_link</frame_name>
+                <!-- <ros>
+                    <remapping>~/image_raw:=D435image_raw</remapping>
+                    <remapping>~/camera_info:=D435camera_info</remapping>
+                </ros> -->
+                <camera_name>D435_camera</camera_name>
+                <hack_baseline>0.2</hack_baseline>
+            </plugin>
+            <always_on>true</always_on>
+            <update_rate>10</update_rate>
+            <camera name="D435_camera">
+                <horizontal_fov>1.5009831567</horizontal_fov>
+                <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <distortion>
+                    <k1>0.0</k1>
+                    <k2>0.0</k2>
+                    <k3>0.0</k3>
+                    <p1>0.0</p1>
+                    <p2>0.0</p2>
+                    <center>0.5 0.5</center>
+                </distortion>
+            </camera>
+        </sensor>
+    </gazebo>
+
+
+    <gazebo reference="RGB_camera_link">
+        <sensor type="camera" name="rgb_camera">
+            <always_on>true</always_on>
+            <update_rate>15.0</update_rate>
+            <camera name="rgb_camera">
+                <horizontal_fov>1.46608</horizontal_fov>
+                <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <distortion>
+                    <k1>0.0</k1>
+                    <k2>0.0</k2>
+                    <k3>0.0</k3>
+                    <p1>0.0</p1>
+                    <p2>0.0</p2>
+                    <center>0.5 0.5</center>
+                </distortion>
+            </camera>
+            <plugin filename="libgazebo_ros_camera.so" name="rgb_camera_plugin" >
+                <ros>
+                    <remapping>~/image_raw:=image_raw</remapping>
+                    <remapping>~/camera_info:=camera_info</remapping>
+                </ros>
+                <camera_name>rgb_camera</camera_name>
+                <frame_name>RGB_camera_link</frame_name>
+                <hack_baseline>0.2</hack_baseline>
+            </plugin>
+        </sensor>
+    </gazebo>
+
   
     <gazebo reference="imu_link">
         <gravity>true</gravity>
