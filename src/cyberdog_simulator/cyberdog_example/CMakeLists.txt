@@ -18,6 +18,9 @@ include_directories(include)
 add_executable(cyberdogmsg_sender src/cyberdogmsg_sender.cpp)
 ament_target_dependencies(cyberdogmsg_sender rclcpp rclcpp_action cyberdog_msg)
 
+add_executable(my_msg src/my_msg.cpp)
+ament_target_dependencies(my_msg rclcpp rclcpp_action cyberdog_msg)
+
 add_executable(keybroad_commander src/keybroad_commander.cpp)
 ament_target_dependencies(keybroad_commander rclcpp rclcpp_action cyberdog_msg)
 target_link_libraries(keybroad_commander lcm) 

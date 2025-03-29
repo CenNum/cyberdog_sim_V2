@@ -2,17 +2,18 @@
 __collection-name__: user-parameters
 
 # jump 20cm box
-jump_time_vector       : [1, 1.3, 1.31, 1.4]
-jump_front_hip         : [-1.5, -1.6, -1.5, -1.3]
+jump_time_vector       : [1, 1.3, 1.31, 1.4]  #跳跃时间向量
+#前后腿的髋关节和膝关节角度变化参数
+jump_front_hip         : [-1.5, -1.6, -1.5, -1.3]   
 jump_front_knee        : [2.4, 2, 2.4, 1.6]
 jump_hind_hip          : [-1.3, -1.4, -1.6, -1.7]
 jump_hind_knee         : [2, 0.5, 2.4, 2.1]
 
 # damping the joint when use mpc only
-
-mpc_body_inertia      : [0.07641, 0.17843, 0.197579]
-mpc_body_mass      : 8.3644
-mpc_task_weight      : [1.25, 1.25, 2, 2, 2, 50, 0, 0, 0.3, 1.5, 1.5, 0.2]
+#定义了机器人使用模型预测控制时的一些关键参数，这些参数用于优化机器人的运动过程。
+mpc_body_inertia      : [0.07641, 0.17843, 0.197579]  #机器人的惯性矩
+mpc_body_mass      : 8.3644  #机器人的质量
+mpc_task_weight      : [1.25, 1.25, 2, 2, 2, 50, 0, 0, 0.3, 1.5, 1.5, 0.2]  #任务权重
 # mpc_task_weight      : [2.0, 2.0, 2.0, 20, 20, 300, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] # for TV-MPC
 mpc_friction_coef          : 0.4
 mpc_friction_coef_bound    : 0.3
@@ -33,6 +34,7 @@ mpc_velocity_filter          : 0.01
 #type of swing legs' trajectory
 mpc_use_bezier :  1
 
+#wbc定义了任务空间控制器的各种权重，这些参数用于调整机器人在不同姿态下的响应性。
 use_wbc               : 1
 
 wbc_weight                : [0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
@@ -85,6 +87,7 @@ use_jcqp                : 0
 stance_legs       : 4
 
 # Gait parameters
+#Gait（步态）参数：定义了机器人的步态类型 gait_type、步态周期时间 gait_period_time、步态切换相位 gait_switching_phase 以及其他步态相关的参数。这些参数控制机器人的步态类型及其特性。
 gait_type             : 4
 gait_period_time      : 0.5
 gait_switching_phase  : 0.5
@@ -93,6 +96,7 @@ gait_max_leg_angle    : 15
 gait_max_stance_time  : 0.25
 gait_min_stance_time  : 0.1
 
+#动作参数：定义了跳跃、前举、后举、芭蕾步、行走波、快步走等动作的具体参数，如摆动角度增益 swing_p_gain、最终脚部高度 foot_final_height 等。
 swing_p_gain          : [0.06, 0.05, 0.03] # [0.1, 0.09, 0.05]
 swing_p_gain_large    : [0.06, 0.05, 0.03] # [0.10, 0.05, 0.03]
 swing_p_gain_motion   : [0.06, 0.05, 0.03] #[0.15, 0.15, 0.03]
@@ -103,9 +107,9 @@ des_roll_pitch_height        : [0.0, 0, 0.25]
 des_roll_pitch_height_motion : [0.0, 0, 0.225]
 des_roll_pitch_height_stair  : [0.0, 0, 0.225]
 des_vel : [0.0, 0.0, 0.0]
-contact_threshold: [1.0, 1, 1]
-detect_terrain: 1
-body_size_port: 1
+contact_threshold: [1.0, 1, 1]  #接触阈值
+detect_terrain: 1  #包括检测地形的开关 
+body_size_port: 1  #躯干尺寸
 
 #for FSM-> dance twolegStand and motion
 jump_initial_pos: [0.0,-0.00,0.28]
@@ -145,11 +149,13 @@ vel_scale_limit_type            : 0.0 # 0: priority, 1: norm
 
 vel_switch : [0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.0, 1.0, 1.0, 0.05]
 auto_switch_enabled : 1.0
-push_recovery_enabled : 1.0
+push_recovery_enabled : 1.0  #是否使用推力恢复
 
 # in order [x, y, yaw]
-vel_xy_yaw_max_default      : [ 2.0  , 1.0  , 2.5]
-vel_xy_yaw_min_default      : [-2.0 , -1.0 , -2.5]
+#速度和加速度限制：定义了机器人在不同姿态下的最大/最小速度 vel_xy_yaw_max_default、vel_xy_yaw_min_default 以及最大/最小加速度 acc_xy_yaw_max_default、acc_xy_yaw_min_default
+#以确保机器人运动的安全和稳定性。
+vel_xy_yaw_max_default      : [ 2.0  , 1.0  , 2.5] #机器人在不同姿态下的最大速度
+vel_xy_yaw_min_default      : [-2.0 , -1.0 , -2.5] #机器人在不同姿态下的最小速度
 vel_xy_yaw_max_trot_fast    : [ 1.6  , 0.55  , 2.5]
 vel_xy_yaw_min_trot_fast    : [-1.2 , -0.55 , -2.5]
 vel_xy_yaw_max_trot_medium  : [ 1.2  , 0.4  , 2.25]
@@ -198,7 +204,7 @@ vel_xy_yaw_min_rapid_rl       : [0 , 0 , -8.0]
 vel_xy_yaw_zero_bound : [-0.00, 0.0, 0.0]
 vel_xy_yaw_zero_pronk : [-0.01, 0.0, 0.0]
 
-acc_xy_yaw_max        : [1.0  , 1.    ,  2.0]
+acc_xy_yaw_max        : [1.0  , 1.    ,  2.0] #最大/最小加速度
 acc_xy_yaw_min        : [-2.0 , -1.   , -2.0]
 acc_xy_yaw_max_bound  : [1.7  , 3.0   ,  3.0]
 acc_xy_yaw_min_bound  : [-2.0 , -3.0  , -3.0]

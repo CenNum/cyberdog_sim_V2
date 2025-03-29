@@ -74,60 +74,84 @@ class ORBSLAM3Node(Node):
     def rgb_callback(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
-            # 确保图像尺寸正确
-            if cv_image.shape[0] != self.height or cv_image.shape[1] != self.width:
-                cv_image = cv2.resize(cv_image, (self.width, self.height))
+            cv_image = cv2.resize(cv_image, (self.width, self.height))  # 统一尺寸
+            cv_image = np.ascontiguousarray(cv_image, dtype=np.uint8)  # 确保数据连续
             self.latest_rgb = cv_image
             cv2.imshow('RGB Image', cv_image)
             cv2.waitKey(1)
             self.process_frames()
         except Exception as e:
             self.get_logger().error(f'Error processing RGB image: {str(e)}')
+
             
     def depth_callback(self, msg):
         try:
-            depth_image = self.bridge.imgmsg_to_cv2(msg, "32FC1")
-            # 确保图像尺寸正确
-            if depth_image.shape[0] != self.height or depth_image.shape[1] != self.width:
-                depth_image = cv2.resize(depth_image, (self.width, self.height))
-                
-            # 确保深度值在有效范围内
-            depth_image = np.nan_to_num(depth_image, 0)  # 将NaN转换为0
-            depth_image = np.clip(depth_image, 0, 10.0)  # 限制深度范围
-            depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.03), cv2.COLORMAP_JET)
-            self.latest_depth = depth_image
+            depth_image = self.bridge.imgmsg_to_cv2(msg, "32FC1")  # 确保是 32-bit float 格式
+            depth_image = cv2.resize(depth_image, (self.width, self.height))  # 统一尺寸
+
+            # **移除 NaN/Inf 数据**
+            depth_image = np.nan_to_num(depth_image, nan=0.0, posinf=10.0, neginf=0.0)
+
+            # **防止超大深度值**
+            depth_image = np.clip(depth_image, 0.1, 10.0)  # 限制深度在 0.1m ~ 10m 内
+
+            # **确保数据连续**
+            self.latest_depth = np.ascontiguousarray(depth_image, dtype=np.float32)
+
+            # 生成深度图显示
+            depth_normalized = cv2.normalize(depth_image, None, 0, 255, cv2.NORM_MINMAX)
+            depth_colormap = cv2.applyColorMap(depth_normalized.astype(np.uint8), cv2.COLORMAP_JET)
+
             cv2.imshow('Depth Image', depth_colormap)
             cv2.waitKey(1)
+
             self.process_frames()
         except Exception as e:
             self.get_logger().error(f'Error processing depth image: {str(e)}')
+
+
+
             
     def process_frames(self):
         if self.latest_rgb is not None and self.latest_depth is not None:
             try:
-                # 确保数据类型正确
+                # 确保数据格式正确
                 rgb_data = np.ascontiguousarray(self.latest_rgb, dtype=np.uint8)
-                depth_data = np.ascontiguousarray(self.latest_depth, dtype=np.float32)
-                
-                # 获取时间戳
-                timestamp = self.frame_id * 0.033  # 假设30fps
+                depth_data = np.ascontiguousarray(self.latest_depth, dtype=np.float32)  # **保持 float32**
+
+                # **检查 depth_data 是否符合要求**
+                print(f"Depth Image Shape: {depth_data.shape}, Type: {depth_data.dtype}, Min: {np.min(depth_data)}, Max: {np.max(depth_data)}")
+
+                if rgb_data.shape != (self.height, self.width, 3) or depth_data.shape != (self.height, self.width):
+                    self.get_logger().error(f"Image size mismatch! RGB: {rgb_data.shape}, Depth: {depth_data.shape}")
+                    return
+
+                # **确保 depth_data 没有 NaN 或 Inf**
+                depth_data = np.nan_to_num(depth_data, nan=0.0, posinf=10.0, neginf=0.0)
+
+                # 传递数据给 ORB-SLAM3
+                timestamp = self.frame_id * 0.033  # 假设 30 FPS
                 self.frame_id += 1
-                
-                # 调用ORB-SLAM3处理帧
-                self.lib.trackRGBD(
-                    self.slam,
-                    rgb_data,
-                    depth_data,
-                    timestamp
-                )
-                
+
+                self.lib.trackRGBD(self.slam, rgb_data, depth_data, timestamp)
+
+                # 清空数据，避免内存泄漏
+                self.latest_rgb = None
+                self.latest_depth = None
             except Exception as e:
                 self.get_logger().error(f'Error in SLAM processing: {str(e)}')
+
+
+
+
             
     def __del__(self):
         if hasattr(self, 'slam') and self.slam:
-            self.lib.System_Shutdown(self.slam)
+            self.lib.System_Shutdown.argtypes = [ctypes.c_void_p]
+            self.lib.System_Shutdown(self.slam)  # 释放 SLAM 实例
+            self.slam = None  # 避免野指针
         cv2.destroyAllWindows()
+
 
 def main(args=None):
     rclpy.init(args=args)

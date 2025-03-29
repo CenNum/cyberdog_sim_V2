@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/cennum/cyberdog_sim/build/orb_slam3_ros2",
+        "/home/cennum/cyberdog_sim/build/motion_control",
+        "/home/cennum/cyberdog_sim/install/lib/python3.8/site-packages",
+        "/home/cennum/cyberdog_ws/install/lib/python3.8/site-packages",
+        "/opt/ros/galactic/lib/python3.8/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/cennum/cyberdog_sim/build/orb_slam3_ros2",
+        "/home/cennum/cyberdog_sim/build/motion_control",
+        "/home/cennum/cyberdog_sim/install/lib/python3.8/site-packages",
+        "/home/cennum/cyberdog_ws/install/lib/python3.8/site-packages",
+        "/opt/ros/galactic/lib/python3.8/site-packages"
+    ]
+}
