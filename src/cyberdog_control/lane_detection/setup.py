@@ -1,6 +1,8 @@
 from setuptools import setup
+from glob import glob
+import os
 
-package_name = 'motion_control'
+package_name = 'lane_detection'
 
 setup(
     name=package_name,
@@ -9,9 +11,12 @@ setup(
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
+        (os.path.join('share', package_name, 'models'), glob('models/*')),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/start_motion.launch.py']),
+         (os.path.join('share', package_name, 'launch'),
+         glob(os.path.join('launch', '*')))
     ],
+
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='cennum',
@@ -21,9 +26,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'cyberdog_walk = motion_control.cyberdog_walk:main',
-            'custom_walk = motion_control.custom_walk:main',
-            'stage1 = motion_control.stage1:main'
+            'qrscan = lane_detection.qrscan:main',
+            'lanemaintain_control = lane_detection.lanemaintain_control:main'
         ],
     },
 )

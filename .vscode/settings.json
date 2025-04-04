@@ -89,5 +89,6 @@
         "*.ipp": "cpp",
         "valarray": "cpp"
     },
-    "ros.distro": "galactic"
+    "ros.distro": "galactic",
+    "cmake.sourceDirectory": "/home/cennum/cyberdog_sim/src/ORB_SLAM3"
 }
