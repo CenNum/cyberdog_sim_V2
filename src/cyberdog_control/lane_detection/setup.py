@@ -13,6 +13,7 @@ setup(
             ['resource/' + package_name]),
         (os.path.join('share', package_name, 'models'), glob('models/*')),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/cyberdog_rtab.launch.py']),
          (os.path.join('share', package_name, 'launch'),
          glob(os.path.join('launch', '*')))
     ],
