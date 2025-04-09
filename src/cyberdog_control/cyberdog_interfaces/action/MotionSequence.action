@@ -1,0 +1,9 @@
+# 请求
+string motion_sequence  # YAML格式的运动序列
+---
+# 结果
+bool success
+---
+# 反馈
+int32 current_step
+int32 total_steps

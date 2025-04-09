@@ -1,4 +1,6 @@
 from setuptools import setup
+from glob import glob
+import os
 
 package_name = 'motion_control'
 
@@ -10,7 +12,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/start_motion.launch.py']),
+        (os.path.join('share', package_name, 'launch'), 
+         glob('launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -23,7 +26,9 @@ setup(
         'console_scripts': [
             'cyberdog_walk = motion_control.cyberdog_walk:main',
             'custom_walk = motion_control.custom_walk:main',
-            'stage1 = motion_control.stage1:main'
+            'stage1 = motion_control.stage1:main',
+            'action_motion_server = motion_control.action_motion_server:main',
+            'action_motion_client = motion_control.action_motion_client:main',
         ],
     },
 )

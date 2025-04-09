@@ -27,7 +27,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'qrscan = lane_detection.qrscan:main',
+            'qrcode_server= lane_detection.qrcode_server:main',
             'lanemaintain_control = lane_detection.lanemaintain_control:main'
         ],
     },

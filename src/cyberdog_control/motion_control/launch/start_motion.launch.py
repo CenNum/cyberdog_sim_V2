@@ -8,6 +8,9 @@ import os
 from launch.substitutions import PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 
+
+# 一键启动仿真环境，控制节点，可视化，二维码服务
+
 def generate_launch_description():
 
     # 启动仿真环境
@@ -40,57 +43,45 @@ def generate_launch_description():
     )
 
     # 启动cyberdog_walk节点
-    custom_walk_node = Node(
+    cyberdog_walk_node = Node(
         package='motion_control',
-        executable='custom_walk',
-        name='custom_walk',
+        executable='cyberdog_walk',
+        name='cyberdog_walk_server',
+        output='screen'
+    )
+
+    # 启动二维码服务端节点
+    cyberdog_qrcode_server_node = Node(
+        package='lane_detection',
+        executable='qrscan',
+        name='qrcode_server',
         output='screen'
     )
 
 
-    # 发送控制命令1
-    send_control_msg1 = ExecuteProcess(
-        cmd=['ros2', 'param', 'set',
-            '/custom_walk',  # 注意这里分成独立参数
-            'motion_sequence',
-            r'''[
-                '["stop", 1.0, [0.0, 0.0, 0.0]]'
-            ]'''.replace('\n', '').replace(' ', ''),],
-        output='screen'
-    )
+    # 发送控制命令
+    # send_control_msg = ExecuteProcess(
+    #     cmd=['ros2', 'param', 'set',
+    #         '/custom_walk',  # 注意这里分成独立参数
+    #         'motion_sequence',
+    #         r'''[
+    #             '["stop", 1.0, [0.0, 0.0, 0.0]]'
+    #         ]'''.replace('\n', '').replace(' ', ''),],
+    #     output='screen'
+    # )
 
-    # 发送控制命令2
-    send_control_msg2 = ExecuteProcess(
-        cmd=['ros2', 'param', 'set',
-            '/custom_walk',  # 注意这里分成独立参数
-            'motion_sequence',
-            r'''[
-                '["forward", 3.0, [0.6, 0.0, 0.0]]',
-                '["strafe", 1.5, [0.0, 0.4, 0.0]]',
-                '["rotate", 3.14, [0.0, 0.0, 0.5]]',
-                '["backward", 4.0, [-0.6, 0.0, 0.0]]',
-                '["stop", 1.0, [0.0, 0.0, 0.0]]'
-            ]'''.replace('\n', '').replace(' ', ''),],
-        output='screen'
-    )
-    # 创建启动custom_walk节点的延时动作
-    delayed_send_control_msg1 = TimerAction(
-        period=10.0,  # 延时2秒
-        actions=[send_control_msg1]
-    )
+    # 创建启动cyberdog_walk节点的延时动作
+    # delayed_send_control_msg1 = TimerAction(
+    #     period=10.0,  # 延时2秒
+    #     actions=[send_control_msg]
+    # )
 
-    # 创建启动custom_walk节点的延时动作
-    delayed_send_control_msg2 = TimerAction(
-        period=18.0,  # 延时8秒
-        actions=[send_control_msg2]
-    )
     
 
     return LaunchDescription([
         launch_sim_script,
         motion_manager_node,
         delayed_activation,
-        #custom_walk_node,
-        #delayed_send_control_msg1,
-        #delayed_send_control_msg2
+        cyberdog_walk_node,
+        #delayed_send_control_msg1
     ])
