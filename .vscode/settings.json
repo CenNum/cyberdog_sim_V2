@@ -87,7 +87,14 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "*.ipp": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "csetjmp": "cpp",
+        "cuchar": "cpp",
+        "rope": "cpp",
+        "slist": "cpp",
+        "scoped_allocator": "cpp",
+        "span": "cpp",
+        "filesystem": "cpp"
     },
     "ros.distro": "galactic",
     "cmake.sourceDirectory": "/home/cennum/cyberdog_sim/src/ORB_SLAM3"

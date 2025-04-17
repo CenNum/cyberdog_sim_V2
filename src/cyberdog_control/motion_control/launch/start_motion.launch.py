@@ -58,30 +58,26 @@ def generate_launch_description():
         output='screen'
     )
 
+    # 发布静态tf
+    map_to_vodom_static_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='map_to_vodom_broadcaster',
+        arguments=['0', '0', '0', '0', '0', '0', 'map', 'vodom']
+    )
 
-    # 发送控制命令
-    # send_control_msg = ExecuteProcess(
-    #     cmd=['ros2', 'param', 'set',
-    #         '/custom_walk',  # 注意这里分成独立参数
-    #         'motion_sequence',
-    #         r'''[
-    #             '["stop", 1.0, [0.0, 0.0, 0.0]]'
-    #         ]'''.replace('\n', '').replace(' ', ''),],
-    #     output='screen'
-    # )
-
-    # 创建启动cyberdog_walk节点的延时动作
-    # delayed_send_control_msg1 = TimerAction(
-    #     period=10.0,  # 延时2秒
-    #     actions=[send_control_msg]
-    # )
-
-    
+    vodom_to_odom_static_tf = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='vodom_to_odom_broadcaster',
+        arguments=['0', '0', '0', '0', '0', '0', 'vodom', 'odom']
+    )
 
     return LaunchDescription([
         launch_sim_script,
         motion_manager_node,
         delayed_activation,
         cyberdog_walk_node,
-        #delayed_send_control_msg1
+        map_to_vodom_static_tf,
+        #vodom_to_odom_static_tf,
     ])

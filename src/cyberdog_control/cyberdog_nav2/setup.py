@@ -1,8 +1,8 @@
 from setuptools import setup
-from glob import glob
 import os
+from glob import glob
 
-package_name = 'motion_control'
+package_name = 'cyberdog_nav2'
 
 setup(
     name=package_name,
@@ -14,8 +14,11 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'), 
          glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'config'), 
+         glob('config/*.yaml')),
+        (os.path.join('share', package_name, 'maps'), 
+         glob('maps/*.yaml maps/*.pgm')),
     ],
-    #package_dir={'motion_control': 'motion_control'},
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='cennum',
@@ -25,11 +28,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'cyberdog_walk = motion_control.cyberdog_walk:main',
-            'custom_walk = motion_control.custom_walk:main',
-            'stage1 = motion_control.stage1:main',
-            'action_motion_server = motion_control.action_motion_server:main',
-            'action_motion_client = motion_control.action_motion_client:main',
         ],
     },
 )
