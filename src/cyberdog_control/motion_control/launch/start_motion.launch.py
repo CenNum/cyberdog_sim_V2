@@ -59,25 +59,19 @@ def generate_launch_description():
     )
 
     # 发布静态tf
-    map_to_vodom_static_tf = Node(
+    map_to_odom_static_tf = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
-        name='map_to_vodom_broadcaster',
-        arguments=['0', '0', '0', '0', '0', '0', 'map', 'vodom']
+        name='map_to_odom_broadcaster',
+        arguments=['0', '0', '0', '1.57079632679', '0', '0', 'map', 'odom']
     )
 
-    vodom_to_odom_static_tf = Node(
-        package='tf2_ros',
-        executable='static_transform_publisher',
-        name='vodom_to_odom_broadcaster',
-        arguments=['0', '0', '0', '0', '0', '0', 'vodom', 'odom']
-    )
 
     return LaunchDescription([
         launch_sim_script,
         motion_manager_node,
         delayed_activation,
         cyberdog_walk_node,
-        map_to_vodom_static_tf,
-        #vodom_to_odom_static_tf,
+        map_to_odom_static_tf,
+
     ])

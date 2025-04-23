@@ -126,7 +126,7 @@ namespace cyberdog
 		//transform.setRotation(q);
 		transform.transform.rotation = geoQuat;
 		transform.header.stamp = this->get_clock()->now();
-		transform.header.frame_id  = "vodom";
+		transform.header.frame_id  = "odom";
 		transform.child_frame_id = root_link_;
 		//br_.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "odom", root_link_));
 		br_->sendTransform(transform);
@@ -160,7 +160,7 @@ namespace cyberdog
 
 		transform.transform.rotation = geoQuat;
 		transform.header.stamp = this->get_clock()->now();
-		transform.header.frame_id  = "vodom";
+		transform.header.frame_id  = "odom";
 		transform.child_frame_id = root_link_;
 		//br_.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "odom", root_link_));
 		br_->sendTransform(transform);

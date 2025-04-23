@@ -2,6 +2,8 @@ import os
 import launch
 import launch_ros
 from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch_ros.actions import Node
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
@@ -12,6 +14,7 @@ def generate_launch_description():
     nav2_bringup_dir = get_package_share_directory('nav2_bringup')
     rviz_config_dir = os.path.join(
         nav2_bringup_dir, 'rviz', 'nav2_default_view.rviz')
+    
     
     # 创建 Launch 配置
     use_sim_time = launch.substitutions.LaunchConfiguration(
