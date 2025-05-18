@@ -28,6 +28,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+                'vel_to_motion = cyberdog_nav2.vel_to_motion:main',
         ],
     },
 )

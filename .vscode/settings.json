@@ -94,7 +94,15 @@
         "slist": "cpp",
         "scoped_allocator": "cpp",
         "span": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "core": "cpp",
+        "sparsecore": "cpp",
+        "numericaldiff": "cpp",
+        "specialfunctions": "cpp",
+        "charconv": "cpp",
+        "coroutine": "cpp",
+        "netfwd": "cpp",
+        "numbers": "cpp"
     },
     "ros.distro": "galactic",
     "cmake.sourceDirectory": "/home/cennum/cyberdog_sim/src/ORB_SLAM3"

@@ -47,7 +47,7 @@ def launch_setup(context, *args, **kwargs):
         output='screen',
         parameters=[{
                     'robot_description': urdf_contents,
-                    'publish_frequency': 500.0,
+                    'publish_frequency': 30.0,
                     'joint_state_topic': 'joint_states',
                     'use_sim_time': use_sim_time
                     }
@@ -63,7 +63,7 @@ def launch_setup(context, *args, **kwargs):
         parameters=[
                 {
                     'robot_description': urdf_contents,
-                    'publish_frequency': 500.0,
+                    'publish_frequency': 30.0,
                     'use_sim_time': use_sim_time
                 }
         ]
